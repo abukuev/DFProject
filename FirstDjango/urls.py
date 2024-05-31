@@ -21,5 +21,6 @@ from django.urls import path
 
 
 urlpatterns = [
-    path('', views.Home),
+    path('', views.home),
+    path('items', views.tems),
 ]
