@@ -23,19 +23,14 @@
         {%if colors|length %}
         Цвета:<br>
         <ul style="list-style-type: square;">
-        {% for C in colors %}
-        <li style="color: {{C.name}}">
+        {% for color in colors %}
+        <li style="color: {{color.name}}">
             <p style="color:black;">
-        {% if C.id is 1 %}
-            Красный
-        {%elif C.id is 2%}
-            Зеленый
-        {%elif C.id is 3%}
-            Синий
-        </p>
+                {{color.name}}
+            </p>
 
         </li>
-        {%endif%}
+        
         {% endfor %}
         {%endif%}
         </ul>
