@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title%}
+    {% endblock %}
+    {% block style %}
+        {# Это общая css для всех страниц #}
+        <link rel="stylesheet" href="style.css">
+        {# Но каждая страница может содержать доп.уникальные css #}
+    {% endblock %}
+</head>
+<body>
+<header>
+    <h1><a href={% url 'home_route' %}> Home </a> /  <a href={% url 'items_route' %}> Items </a> / <a href={% url 'about_route' %}> About </a></h1>
+</header>
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+<footer>
+    © Учебная страница
+</footer>
+</body>
+</html>

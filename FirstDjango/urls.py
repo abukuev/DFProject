@@ -21,8 +21,8 @@ from django.urls import path
 
 
 urlpatterns = [
-    path('', views.home),
-    path('items', views.get_items),
-    path('about', views.about),
-    path('item/<int:itemid>', views.get_item),
+    path('', views.home, name='home_route'),
+    path('items', views.get_items, name ='items_route'),
+    path('about', views.about, name ='about_route'),
+    path('item/<int:itemid>', views.get_item, name ='getitem_route')
 ]

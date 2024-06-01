@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Карточка товара</title>
-</head>
-<body>
-<h1><a href="/"> Home </a> /  <a href="/items"> Items </a> / <a href="/about"> About </a></h1>
+{% extends 'base.html' %}
+{%block title%}
+<title>Карточка товара</title>
+{%endblock%}
+{% block content %}
    <h2> Имя: {{it.name}}</h2>
    <p> Фирма: {{it.brand}}</p>
    <div>
@@ -16,6 +12,5 @@
    </div>
    Описание товара: {{it.description}}
     </div>
-    <p> <a href="/items">Список товаров</a>
-</body>
-</html>
+    <p> <a href={% url 'items_route' %}>Список товаров</a>
+{%endblock%}

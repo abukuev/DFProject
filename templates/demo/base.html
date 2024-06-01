@@ -10,16 +10,11 @@
     {% endblock %}
 </head>
 <body>
-<header>
-    Общий заголовок всех страниц
-</header>
+    {% include 'header.html' %}
 <main>
-    {#  Содержимое этого блока уникально на каждой странице #}
     {% block content %}
     {% endblock %}
 </main>
-<footer>
-    Общий футер всех страниц
-</footer>
+    {% include 'footer.html' %}
 </body>
 </html>
