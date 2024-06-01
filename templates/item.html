@@ -4,10 +4,12 @@
 {%block title%}
 <title>Карточка товара</title>
 {%endblock%}
+
 {% block style %}
     {{ block.super}}
     <link rel="stylesheet" href="{% static "css/style.css" %}">
 {% endblock  %}
+
 {% block content %}
    <h2> Имя: {{it.name}}</h2>
    <p> Фирма: {{it.brand}}</p>
@@ -21,6 +23,7 @@
     </div>
     <div>
         {%if colors|length %}
+        <p>
         Цвета:<br>
         <ul style="list-style-type: square;">
         {% for color in colors %}
@@ -32,6 +35,11 @@
         </li>
         
         {% endfor %}
+        </p>
+        {%else%}
+        <p>
+            Цвета не указаны
+        </p>
         {%endif%}
         </ul>
     <p> <a href={% url 'items_route' %}>Список товаров</a>
