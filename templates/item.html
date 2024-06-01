@@ -8,7 +8,8 @@
 <body>
 <h1><a href="/"> Home </a> /  <a href="/items"> Items </a> / <a href="/about"> About </a></h1>
    <h2> Имя: {{it.name}}</h2>
-    {% if  it.quantity > 0 %}<p> Количество: {{it.quantity}}</p>
+   <p> Фирма: {{it.brand}}</p>
+    {% if  it.count > 0 %}<p> Количество: {{it.count}}</p>
     {% else %} <p> Данный товар отсутствует</p>
     {% endif %}
     <p> <a href="/items">Список товаров</a>

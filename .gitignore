@@ -18,3 +18,4 @@ venv.bak/
 __pycache__
 db.sqlite3
 media
+fixtures

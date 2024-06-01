@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
+from MainApp.models import Item
+from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 
 about_=  {"name": "Алексей",
@@ -8,7 +10,7 @@ about_=  {"name": "Алексей",
         "tel":"8-923-000-00-00",
         "email_":"abukuev@list.ru"
         }
-
+'''
 items = [
 {"id": 1, "name": "Кроссовки abibas" ,"quantity":5},
 {"id": 2, "name": "Куртка кожаная" ,"quantity":2},
@@ -16,6 +18,7 @@ items = [
 {"id": 7, "name": "Картофель фри" ,"quantity":0},
 {"id": 8, "name": "Кепка" ,"quantity":124},
 ]
+'''
 
 def home(request):
     context = {
@@ -38,7 +41,7 @@ def about(request):
     return render(request,'about.html',context)
 
 def get_items(request):
-    
+    items = Item.objects.all()
     context={
         'items':items
     }
@@ -46,22 +49,14 @@ def get_items(request):
     return render(request,'items.html',context)
 
 def get_item(request,itemid):
-    print(f'item_id: {itemid}')
-    for item in items:
-        if item['id'] == itemid:
-            context = {
+    try:
+        item = Item.objects.get(id=itemid)
+    except ObjectDoesNotExist:
+        item=None
+    if item is not None:
+        context = {
                 "it":item
-            }
-            return render(request,'item.html',context)
+                }
+        return render(request,'item.html',context)
     return HttpResponseNotFound(f"{itemid} Not Found")
 
-
-'''
-    for item in items:
-        if item['id'] == item_id:
-            context = {
-                "item":item
-            }
-            return render(request,'item.html',context)
-    return HttpResponseNotFound(f"{item_id} Not Found")
-    '''
