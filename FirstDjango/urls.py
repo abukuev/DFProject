@@ -18,11 +18,12 @@ Including another URLconf
 from MainApp import views
 from django.contrib import admin
 from django.urls import path
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.home, name='home_route'),
     path('items', views.get_items, name ='items_route'),
     path('about', views.about, name ='about_route'),
     path('item/<int:itemid>', views.get_item, name ='getitem_route')
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

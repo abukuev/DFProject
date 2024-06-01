@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {%block title%}
 <title>Карточка товара</title>
 {%endblock%}
+{% block style %}
+    {{ block.super}}
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+{% endblock  %}
 {% block content %}
    <h2> Имя: {{it.name}}</h2>
    <p> Фирма: {{it.brand}}</p>
@@ -10,7 +16,28 @@
     {% else %} <p> Данный товар отсутствует</p>
     {% endif %}
    </div>
+   <div>
    Описание товара: {{it.description}}
     </div>
+    <div>
+        {%if colors|length %}
+        Цвета:<br>
+        <ul style="list-style-type: square;">
+        {% for C in colors %}
+        <li style="color: {{C.name}}">
+            <p style="color:black;">
+        {% if C.id is 1 %}
+            Красный
+        {%elif C.id is 2%}
+            Зеленый
+        {%elif C.id is 3%}
+            Синий
+        </p>
+
+        </li>
+        {%endif%}
+        {% endfor %}
+        {%endif%}
+        </ul>
     <p> <a href={% url 'items_route' %}>Список товаров</a>
 {%endblock%}
